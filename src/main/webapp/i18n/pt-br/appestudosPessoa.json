@@ -1,0 +1,29 @@
+{
+  "gatewayappestudosApp": {
+    "appestudosPessoa": {
+      "home": {
+        "title": "Pessoas",
+        "createLabel": "Criar novo Pessoa",
+        "createOrEditLabel": "Criar ou editar Pessoa",
+        "notFound": "Nenhum Pessoa encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Pessoa {{ id }}?"
+      },
+      "detail": {
+        "title": "Pessoa"
+      },
+      "foto": "Foto",
+      "nome": "Nome",
+      "sobrenome": "Sobrenome",
+      "email": "Email"
+    }
+  },
+  "appestudosApp": {
+    "appestudosPessoa": {
+      "created": "Um novo Pessoa foi criado com o identificador {{ param }}",
+      "updated": "Um Pessoa foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Pessoa foi excluído com o identificador {{ param }}"
+    }
+  }
+}

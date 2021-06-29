@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.appestudos.gateway",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "gateway",
+    "baseName": "gatewayappestudos",
+    "packageName": "com.appestudos.gateway",
+    "packageFolder": "com/appestudos/gateway",
+    "serverPort": "8080",
+    "authenticationType": "oauth2",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "no",
+    "devDatabaseType": "no",
+    "prodDatabaseType": "no",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1616371031532,
+    "testFrameworks": ["cucumber"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br", "en", "es"],
+    "blueprints": []
+  }
+}
