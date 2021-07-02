@@ -9,6 +9,8 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IPessoa, Pessoa } from 'app/shared/model/appestudos/pessoa.model';
 import { PessoaService } from './pessoa.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
+import { IEndereco } from 'app/shared/model/appestudos/endereco.model';
+import { EnderecoService } from 'app/entities/appestudos/endereco/endereco.service';
 
 @Component({
   selector: 'jhi-pessoa-update',
@@ -16,6 +18,7 @@ import { AlertError } from 'app/shared/alert/alert-error.model';
 })
 export class PessoaUpdateComponent implements OnInit {
   isSaving = false;
+  enderecos: IEndereco[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -24,12 +27,14 @@ export class PessoaUpdateComponent implements OnInit {
     nome: [],
     sobrenome: [],
     email: [null, [Validators.required]],
+    enderecoId: [],
   });
 
   constructor(
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected pessoaService: PessoaService,
+    protected enderecoService: EnderecoService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -37,6 +42,8 @@ export class PessoaUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ pessoa }) => {
       this.updateForm(pessoa);
+
+      this.enderecoService.query().subscribe((res: HttpResponse<IEndereco[]>) => (this.enderecos = res.body || []));
     });
   }
 
@@ -48,6 +55,7 @@ export class PessoaUpdateComponent implements OnInit {
       nome: pessoa.nome,
       sobrenome: pessoa.sobrenome,
       email: pessoa.email,
+      enderecoId: pessoa.enderecoId,
     });
   }
 
@@ -90,6 +98,7 @@ export class PessoaUpdateComponent implements OnInit {
       nome: this.editForm.get(['nome'])!.value,
       sobrenome: this.editForm.get(['sobrenome'])!.value,
       email: this.editForm.get(['email'])!.value,
+      enderecoId: this.editForm.get(['enderecoId'])!.value,
     };
   }
 
@@ -107,5 +116,9 @@ export class PessoaUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IEndereco): any {
+    return item.id;
   }
 }

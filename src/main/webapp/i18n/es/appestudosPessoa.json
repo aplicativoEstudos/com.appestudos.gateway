@@ -16,7 +16,8 @@
       "foto": "Foto",
       "nome": "Nome",
       "sobrenome": "Sobrenome",
-      "email": "Email"
+      "email": "Email",
+      "endereco": "Endereco"
     }
   },
   "appestudosApp": {

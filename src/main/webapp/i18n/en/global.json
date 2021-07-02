@@ -8,6 +8,7 @@
       "entities": {
         "main": "Entities",
         "appestudosPessoa": "Pessoa",
+        "appestudosEndereco": "Endereco",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

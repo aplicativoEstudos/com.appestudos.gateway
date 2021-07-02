@@ -53,6 +53,14 @@
                         </small>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosPessoa.endereco" for="field_endereco">Endereco</label>
+                    <select class="form-control" id="field_endereco" name="endereco" formControlName="enderecoId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="enderecoOption.id" *ngFor="let enderecoOption of enderecos; trackBy: trackById">{{ enderecoOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>
