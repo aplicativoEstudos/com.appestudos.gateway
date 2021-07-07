@@ -9,6 +9,9 @@
         "main": "Entidades",
         "appestudosPessoa": "Pessoa",
         "appestudosEndereco": "Endereco",
+        "appestudosArea": "Area",
+        "appestudosDisciplina": "Disciplina",
+        "appestudosRegistroDeEstudo": "Registro De Estudo",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

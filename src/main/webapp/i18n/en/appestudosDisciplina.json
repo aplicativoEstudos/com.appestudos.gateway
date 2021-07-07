@@ -1,0 +1,26 @@
+{
+  "gatewayappestudosApp": {
+    "appestudosDisciplina": {
+      "home": {
+        "title": "Disciplinas",
+        "createLabel": "Create a new Disciplina",
+        "createOrEditLabel": "Create or edit a Disciplina",
+        "notFound": "No Disciplinas found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Disciplina {{ id }}?"
+      },
+      "detail": {
+        "title": "Disciplina"
+      },
+      "nomeDisciplina": "Nome Disciplina"
+    }
+  },
+  "appestudosApp": {
+    "appestudosDisciplina": {
+      "created": "A new Disciplina is created with identifier {{ param }}",
+      "updated": "A Disciplina is updated with identifier {{ param }}",
+      "deleted": "A Disciplina is deleted with identifier {{ param }}"
+    }
+  }
+}

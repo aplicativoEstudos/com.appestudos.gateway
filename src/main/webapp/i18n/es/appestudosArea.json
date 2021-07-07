@@ -1,0 +1,26 @@
+{
+  "gatewayappestudosApp": {
+    "appestudosArea": {
+      "home": {
+        "title": "Areas",
+        "createLabel": "Crear nuevo Area",
+        "createOrEditLabel": "Crear o editar Area",
+        "notFound": "Ningún Areas encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Area {{ id }}?"
+      },
+      "detail": {
+        "title": "Area"
+      },
+      "noma": "Noma"
+    }
+  },
+  "appestudosApp": {
+    "appestudosArea": {
+      "created": "Un nuevo Area ha sido creado con el identificador {{ param }}",
+      "updated": "Un Area ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Area ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

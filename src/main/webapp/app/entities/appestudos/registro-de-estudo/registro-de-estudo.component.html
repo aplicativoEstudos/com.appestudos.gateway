@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.home.title">Registro De Estudos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-registro-de-estudo" [routerLink]="['/registro-de-estudo/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.home.createLabel">
+            Create a new Registro De Estudo
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="registroDeEstudos?.length === 0">
+        <span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.home.notFound">No registroDeEstudos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="registroDeEstudos && registroDeEstudos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="data"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.data">Data</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="horaInicial"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaInicial">Hora Inicial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="horaFinal"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaFinal">Hora Final</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="duracaoTempo"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.duracaoTempo">Duracao Tempo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="areaId"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.area">Area</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="disciplinaId"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.disciplina">Disciplina</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pessoaId"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.pessoa">Pessoa</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let registroDeEstudo of registroDeEstudos ;trackBy: trackId">
+                    <td><a [routerLink]="['/registro-de-estudo', registroDeEstudo.id, 'view']">{{ registroDeEstudo.id }}</a></td>
+                    <td>{{ registroDeEstudo.data | date:'mediumDate' }}</td>
+                    <td>{{ registroDeEstudo.horaInicial | date:'medium' }}</td>
+                    <td>{{ registroDeEstudo.horaFinal | date:'medium' }}</td>
+                    <td>{{ registroDeEstudo.duracaoTempo }}</td>
+                    <td>
+                        <div *ngIf="registroDeEstudo.areaId">
+                            <a [routerLink]="['/area', registroDeEstudo.areaId , 'view']" >{{ registroDeEstudo.areaId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="registroDeEstudo.disciplinaId">
+                            <a [routerLink]="['/disciplina', registroDeEstudo.disciplinaId , 'view']" >{{ registroDeEstudo.disciplinaId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="registroDeEstudo.pessoaId">
+                            <a [routerLink]="['/pessoa', registroDeEstudo.pessoaId , 'view']" >{{ registroDeEstudo.pessoaId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/registro-de-estudo', registroDeEstudo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/registro-de-estudo', registroDeEstudo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(registroDeEstudo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="registroDeEstudos && registroDeEstudos.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

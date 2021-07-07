@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="registroDeEstudo">
+            <h2><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.detail.title">Registro De Estudo</span> {{ registroDeEstudo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.data">Data</span></dt>
+                <dd>
+                    <span>{{ registroDeEstudo.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaInicial">Hora Inicial</span></dt>
+                <dd>
+                    <span>{{ registroDeEstudo.horaInicial }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaFinal">Hora Final</span></dt>
+                <dd>
+                    <span>{{ registroDeEstudo.horaFinal }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.duracaoTempo">Duracao Tempo</span></dt>
+                <dd>
+                    <span>{{ registroDeEstudo.duracaoTempo }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.area">Area</span></dt>
+                <dd>
+                    <div *ngIf="registroDeEstudo.areaId">
+                        <a [routerLink]="['/area', registroDeEstudo.areaId, 'view']">{{ registroDeEstudo.areaId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.disciplina">Disciplina</span></dt>
+                <dd>
+                    <div *ngIf="registroDeEstudo.disciplinaId">
+                        <a [routerLink]="['/disciplina', registroDeEstudo.disciplinaId, 'view']">{{ registroDeEstudo.disciplinaId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.pessoa">Pessoa</span></dt>
+                <dd>
+                    <div *ngIf="registroDeEstudo.pessoaId">
+                        <a [routerLink]="['/pessoa', registroDeEstudo.pessoaId, 'view']">{{ registroDeEstudo.pessoaId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/registro-de-estudo', registroDeEstudo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

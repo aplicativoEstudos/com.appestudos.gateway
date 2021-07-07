@@ -1,0 +1,32 @@
+{
+  "gatewayappestudosApp": {
+    "appestudosRegistroDeEstudo": {
+      "home": {
+        "title": "Registro De Estudos",
+        "createLabel": "Crear nuevo Registro De Estudo",
+        "createOrEditLabel": "Crear o editar Registro De Estudo",
+        "notFound": "Ningún Registro De Estudos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Registro De Estudo {{ id }}?"
+      },
+      "detail": {
+        "title": "Registro De Estudo"
+      },
+      "data": "Data",
+      "horaInicial": "Hora Inicial",
+      "horaFinal": "Hora Final",
+      "duracaoTempo": "Duracao Tempo",
+      "area": "Area",
+      "disciplina": "Disciplina",
+      "pessoa": "Pessoa"
+    }
+  },
+  "appestudosApp": {
+    "appestudosRegistroDeEstudo": {
+      "created": "Un nuevo Registro De Estudo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Registro De Estudo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Registro De Estudo ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}
