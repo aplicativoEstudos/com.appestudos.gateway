@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(EnderecoService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Endereco(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Endereco(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
@@ -58,6 +58,7 @@ describe('Service Tests', () => {
             bairro: 'BBBBBB',
             rua: 'BBBBBB',
             cep: 'BBBBBB',
+            numero: 1,
           },
           elemDefault
         );
@@ -78,6 +79,7 @@ describe('Service Tests', () => {
             bairro: 'BBBBBB',
             rua: 'BBBBBB',
             cep: 'BBBBBB',
+            numero: 1,
           },
           elemDefault
         );

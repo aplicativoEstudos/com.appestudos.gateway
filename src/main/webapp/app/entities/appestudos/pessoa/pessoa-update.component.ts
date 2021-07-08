@@ -24,9 +24,10 @@ export class PessoaUpdateComponent implements OnInit {
     id: [],
     foto: [],
     fotoContentType: [],
-    nome: [],
-    sobrenome: [],
-    email: [null, [Validators.required]],
+    nome: [null, [Validators.required]],
+    sobrenome: [null, [Validators.required]],
+    email: [null, [Validators.required, Validators.pattern('^\\S+@\\S+$')]],
+    telefone: [null, [Validators.pattern('\\(\\d{2}\\)\\s\\d{4,5}\\-\\d{4}')]],
     enderecoId: [],
   });
 
@@ -55,6 +56,7 @@ export class PessoaUpdateComponent implements OnInit {
       nome: pessoa.nome,
       sobrenome: pessoa.sobrenome,
       email: pessoa.email,
+      telefone: pessoa.telefone,
       enderecoId: pessoa.enderecoId,
     });
   }
@@ -98,6 +100,7 @@ export class PessoaUpdateComponent implements OnInit {
       nome: this.editForm.get(['nome'])!.value,
       sobrenome: this.editForm.get(['sobrenome'])!.value,
       email: this.editForm.get(['email'])!.value,
+      telefone: this.editForm.get(['telefone'])!.value,
       enderecoId: this.editForm.get(['enderecoId'])!.value,
     };
   }

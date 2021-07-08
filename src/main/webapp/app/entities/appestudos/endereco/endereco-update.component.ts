@@ -20,7 +20,8 @@ export class EnderecoUpdateComponent implements OnInit {
     cidade: [null, [Validators.required]],
     bairro: [null, [Validators.required]],
     rua: [null, [Validators.required]],
-    cep: [null, [Validators.required]],
+    cep: [null, [Validators.required, Validators.pattern('[0-9]{5}-[\\d]{3}')]],
+    numero: [],
   });
 
   constructor(protected enderecoService: EnderecoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -38,6 +39,7 @@ export class EnderecoUpdateComponent implements OnInit {
       bairro: endereco.bairro,
       rua: endereco.rua,
       cep: endereco.cep,
+      numero: endereco.numero,
     });
   }
 
@@ -63,6 +65,7 @@ export class EnderecoUpdateComponent implements OnInit {
       bairro: this.editForm.get(['bairro'])!.value,
       rua: this.editForm.get(['rua'])!.value,
       cep: this.editForm.get(['cep'])!.value,
+      numero: this.editForm.get(['numero'])!.value,
     };
   }
 

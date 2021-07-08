@@ -17,6 +17,7 @@
       "nome": "Nome",
       "sobrenome": "Sobrenome",
       "email": "Email",
+      "telefone": "Telefone",
       "endereco": "Endereco"
     }
   },

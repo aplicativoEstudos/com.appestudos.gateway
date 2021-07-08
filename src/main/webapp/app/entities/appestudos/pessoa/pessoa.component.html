@@ -27,6 +27,7 @@
                     <th scope="col"  jhiSortBy="nome"><span jhiTranslate="gatewayappestudosApp.appestudosPessoa.nome">Nome</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="sobrenome"><span jhiTranslate="gatewayappestudosApp.appestudosPessoa.sobrenome">Sobrenome</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="email"><span jhiTranslate="gatewayappestudosApp.appestudosPessoa.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefone"><span jhiTranslate="gatewayappestudosApp.appestudosPessoa.telefone">Telefone</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="enderecoId"><span jhiTranslate="gatewayappestudosApp.appestudosPessoa.endereco">Endereco</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -41,6 +42,7 @@
                     <td>{{ pessoa.nome }}</td>
                     <td>{{ pessoa.sobrenome }}</td>
                     <td>{{ pessoa.email }}</td>
+                    <td>{{ pessoa.telefone }}</td>
                     <td>
                         <div *ngIf="pessoa.enderecoId">
                             <a [routerLink]="['/endereco', pessoa.enderecoId , 'view']" >{{ pessoa.enderecoId }}</a>

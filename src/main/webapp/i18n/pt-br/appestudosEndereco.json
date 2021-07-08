@@ -16,7 +16,8 @@
       "cidade": "Cidade",
       "bairro": "Bairro",
       "rua": "Rua",
-      "cep": "Cep"
+      "cep": "Cep",
+      "numero": "Numero"
     }
   },
   "appestudosApp": {

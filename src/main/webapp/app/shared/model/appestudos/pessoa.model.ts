@@ -5,6 +5,7 @@ export interface IPessoa {
   nome?: string;
   sobrenome?: string;
   email?: string;
+  telefone?: string;
   enderecoId?: number;
 }
 
@@ -16,6 +17,7 @@ export class Pessoa implements IPessoa {
     public nome?: string,
     public sobrenome?: string,
     public email?: string,
+    public telefone?: string,
     public enderecoId?: number
   ) {}
 }

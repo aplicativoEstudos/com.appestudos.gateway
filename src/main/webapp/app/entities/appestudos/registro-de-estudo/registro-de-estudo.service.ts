@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IRegistroDeEstudo } from 'app/shared/model/appestudos/registro-de-estudo.model';
@@ -22,6 +21,20 @@ export class RegistroDeEstudoService {
     const copy = this.convertDateFromClient(registroDeEstudo);
     return this.http
       .post<IRegistroDeEstudo>(this.resourceUrl, copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  start(registroDeEstudo: IRegistroDeEstudo): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(registroDeEstudo);
+    return this.http
+      .post<IRegistroDeEstudo>(this.resourceUrl+"/start", copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  stop(registroDeEstudo: IRegistroDeEstudo): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(registroDeEstudo);
+    return this.http
+      .put<IRegistroDeEstudo>(this.resourceUrl+"/stop", copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
@@ -51,7 +64,6 @@ export class RegistroDeEstudoService {
 
   protected convertDateFromClient(registroDeEstudo: IRegistroDeEstudo): IRegistroDeEstudo {
     const copy: IRegistroDeEstudo = Object.assign({}, registroDeEstudo, {
-      data: registroDeEstudo.data && registroDeEstudo.data.isValid() ? registroDeEstudo.data.format(DATE_FORMAT) : undefined,
       horaInicial:
         registroDeEstudo.horaInicial && registroDeEstudo.horaInicial.isValid() ? registroDeEstudo.horaInicial.toJSON() : undefined,
       horaFinal: registroDeEstudo.horaFinal && registroDeEstudo.horaFinal.isValid() ? registroDeEstudo.horaFinal.toJSON() : undefined,
@@ -61,7 +73,6 @@ export class RegistroDeEstudoService {
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.data = res.body.data ? moment(res.body.data) : undefined;
       res.body.horaInicial = res.body.horaInicial ? moment(res.body.horaInicial) : undefined;
       res.body.horaFinal = res.body.horaFinal ? moment(res.body.horaFinal) : undefined;
     }
@@ -71,7 +82,6 @@ export class RegistroDeEstudoService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((registroDeEstudo: IRegistroDeEstudo) => {
-        registroDeEstudo.data = registroDeEstudo.data ? moment(registroDeEstudo.data) : undefined;
         registroDeEstudo.horaInicial = registroDeEstudo.horaInicial ? moment(registroDeEstudo.horaInicial) : undefined;
         registroDeEstudo.horaFinal = registroDeEstudo.horaFinal ? moment(registroDeEstudo.horaFinal) : undefined;
       });

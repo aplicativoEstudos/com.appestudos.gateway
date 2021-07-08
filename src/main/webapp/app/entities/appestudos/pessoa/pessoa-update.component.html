@@ -34,12 +34,24 @@
                     <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosPessoa.nome" for="field_nome">Nome</label>
                     <input type="text" class="form-control" name="nome" id="field_nome"
                            formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosPessoa.sobrenome" for="field_sobrenome">Sobrenome</label>
                     <input type="text" class="form-control" name="sobrenome" id="field_sobrenome"
                            formControlName="sobrenome"/>
+                    <div *ngIf="editForm.get('sobrenome')!.invalid && (editForm.get('sobrenome')!.dirty || editForm.get('sobrenome')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sobrenome')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -50,6 +62,22 @@
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email' }">
+                            This field should follow pattern for "Email".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosPessoa.telefone" for="field_telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="field_telefone"
+                           formControlName="telefone"/>
+                    <div *ngIf="editForm.get('telefone')!.invalid && (editForm.get('telefone')!.dirty || editForm.get('telefone')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefone')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Telefone' }">
+                            This field should follow pattern for "Telefone".
                         </small>
                     </div>
                 </div>

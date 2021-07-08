@@ -103,7 +103,9 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Salvar",
-      "view": "Visualizar"
+      "view": "Visualizar",
+      "start": "Start",
+      "stop": "Stop"
     },
     "detail": {
       "field": "Campo",

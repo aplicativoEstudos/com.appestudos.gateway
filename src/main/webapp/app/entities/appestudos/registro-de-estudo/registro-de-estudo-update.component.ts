@@ -27,16 +27,14 @@ export class RegistroDeEstudoUpdateComponent implements OnInit {
   areas: IArea[] = [];
   disciplinas: IDisciplina[] = [];
   pessoas: IPessoa[] = [];
-  dataDp: any;
 
   editForm = this.fb.group({
     id: [],
-    data: [],
     horaInicial: [],
     horaFinal: [],
     duracaoTempo: [],
-    areaId: [],
-    disciplinaId: [],
+    areaId: [null, Validators.required],
+    disciplinaId: [null, Validators.required],
     pessoaId: [null, Validators.required],
   });
 
@@ -70,7 +68,6 @@ export class RegistroDeEstudoUpdateComponent implements OnInit {
   updateForm(registroDeEstudo: IRegistroDeEstudo): void {
     this.editForm.patchValue({
       id: registroDeEstudo.id,
-      data: registroDeEstudo.data,
       horaInicial: registroDeEstudo.horaInicial ? registroDeEstudo.horaInicial.format(DATE_TIME_FORMAT) : null,
       horaFinal: registroDeEstudo.horaFinal ? registroDeEstudo.horaFinal.format(DATE_TIME_FORMAT) : null,
       duracaoTempo: registroDeEstudo.duracaoTempo,
@@ -98,7 +95,6 @@ export class RegistroDeEstudoUpdateComponent implements OnInit {
     return {
       ...new RegistroDeEstudo(),
       id: this.editForm.get(['id'])!.value,
-      data: this.editForm.get(['data'])!.value,
       horaInicial: this.editForm.get(['horaInicial'])!.value
         ? moment(this.editForm.get(['horaInicial'])!.value, DATE_TIME_FORMAT)
         : undefined,
