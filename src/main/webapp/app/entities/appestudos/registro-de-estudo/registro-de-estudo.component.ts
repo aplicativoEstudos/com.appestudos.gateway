@@ -24,6 +24,7 @@ export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  erro: any = 'correto';
 
   constructor(
     protected registroDeEstudoService: RegistroDeEstudoService,
@@ -44,7 +45,7 @@ export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         (res: HttpResponse<IRegistroDeEstudo[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate),
-        () => this.onError()
+        (err: any) => this.onErrorCustom(err)
       );
   }
 
@@ -127,6 +128,11 @@ export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IRegistroDeEstudo>>): void {
     result.subscribe(
       () => {this.loadPage()},
-      () => {}    );
+      (err: any) => this.onErrorCustom(err)
+      );
+  }
+
+  protected onErrorCustom(err: any): void {
+    this.erro = err.error.detail;
   }
 }
