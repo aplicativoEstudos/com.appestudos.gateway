@@ -31,6 +31,7 @@
   },
   "defaultProject": "gatewayappestudos",
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "2e19d2bf-85a8-45e1-9934-020e929cdbbd"
   }
 }

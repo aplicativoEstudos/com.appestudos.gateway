@@ -14,6 +14,17 @@
 
     <jhi-alert></jhi-alert>
     {{erro}}
+
+    <p>
+        Start editing to see some magic happen :)
+      </p>
+
+      <button (click)='startTimer()'>Start Timer</button>
+      <button (click)='pauseTimer()'>Pause</button>
+      <button (click)='zerar()'>Zerar</button>
+      <button (click)='salvar()'>Salvar</button>
+      <p>{{horas}}:{{minutos}}:{{segundos}} Seconds Left....</p> 
+
     <div class="alert alert-warning" id="no-result" *ngIf="registroDeEstudos?.length === 0">
         <span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.home.notFound">No registroDeEstudos found</span>
     </div>

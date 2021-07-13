@@ -9,12 +9,15 @@ import { RegistroDeEstudoDeleteDialogComponent } from './registro-de-estudo-dele
 import { registroDeEstudoRoute } from './registro-de-estudo.route';
 
 @NgModule({
-  imports: [GatewayappestudosSharedModule, RouterModule.forChild(registroDeEstudoRoute)],
+  imports: [
+    GatewayappestudosSharedModule, 
+    RouterModule.forChild(registroDeEstudoRoute)
+  ],
   declarations: [
     RegistroDeEstudoComponent,
     RegistroDeEstudoDetailComponent,
     RegistroDeEstudoUpdateComponent,
-    RegistroDeEstudoDeleteDialogComponent,
+    RegistroDeEstudoDeleteDialogComponent
   ],
   entryComponents: [RegistroDeEstudoDeleteDialogComponent],
 })

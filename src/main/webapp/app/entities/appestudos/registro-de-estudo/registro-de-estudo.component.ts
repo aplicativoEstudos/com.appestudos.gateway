@@ -5,7 +5,7 @@ import { Subscription, combineLatest, Observable } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IRegistroDeEstudo } from 'app/shared/model/appestudos/registro-de-estudo.model';
+import { IRegistroDeEstudo, RegistroDeEstudo } from 'app/shared/model/appestudos/registro-de-estudo.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { RegistroDeEstudoService } from './registro-de-estudo.service';
@@ -17,6 +17,7 @@ import { RegistroDeEstudoDeleteDialogComponent } from './registro-de-estudo-dele
 })
 export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
   registroDeEstudos?: IRegistroDeEstudo[];
+  registroDeEstudo?: IRegistroDeEstudo = {};
   eventSubscriber?: Subscription;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -25,6 +26,11 @@ export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
   erro: any = 'correto';
+
+  segundos: any = 0;
+  minutos: any = 0;
+  horas: any = 0;
+  interval: any = 0;
 
   constructor(
     protected registroDeEstudoService: RegistroDeEstudoService,
@@ -134,5 +140,40 @@ export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
 
   protected onErrorCustom(err: any): void {
     this.erro = err.error.detail;
+  }
+
+  startTimer(): any {
+      this.interval = setInterval(() => {
+        if(this.segundos < 59) {
+          this.segundos++;
+        } else {
+          this.segundos = 0;
+          this.minutos++;
+          if(this.minutos>59){
+            this.minutos = 0;
+            this.horas++;
+          }
+        }
+      },1000)
+  }
+
+  pauseTimer(): any {
+    // this.registroDeEstudo!.duracaoTempo = this.horas+':'+this.minutos+':'+this.segundos;
+    // this.subscribeToSaveResponse(this.registroDeEstudoService.create(this.registroDeEstudo!));
+    clearInterval(this.interval);
+  }
+  salvar(): void{
+    this.registroDeEstudo!.duracaoTempo = '';
+     this.registroDeEstudo!.duracaoTempo = this.horas+':'+this.minutos+':'+this.segundos;
+     this.registroDeEstudo!.disciplinaId = 1;
+     this.registroDeEstudo!.areaId = 1;
+     this.subscribeToSaveResponse(this.registroDeEstudoService.create(this.registroDeEstudo!));
+     this.pauseTimer()
+     this.minutos = 0; this.segundos = 0; this.horas = 0;
+  }
+
+  zerar(): any {
+    clearInterval(this.interval);
+    this.minutos = 0; this.segundos = 0; this.horas = 0;
   }
 }
