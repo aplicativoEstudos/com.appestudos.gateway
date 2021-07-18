@@ -123,14 +123,6 @@ export class RegistroDeEstudoComponent implements OnInit, OnDestroy {
     this.ngbPaginationPage = this.page ?? 1;
   }
 
-  start(registroDeEstudo: IRegistroDeEstudo): void {
-      this.subscribeToSaveResponse(this.registroDeEstudoService.start(registroDeEstudo));
-  }
-
-  stop(registroDeEstudo: IRegistroDeEstudo): void {
-    this.subscribeToSaveResponse(this.registroDeEstudoService.stop(registroDeEstudo));
-  } 
-
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IRegistroDeEstudo>>): void {
     result.subscribe(
       () => {this.loadPage()},

@@ -69,7 +69,6 @@ export class RegistroDeEstudoUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: registroDeEstudo.id,
       horaInicial: registroDeEstudo.horaInicial ? registroDeEstudo.horaInicial.format(DATE_TIME_FORMAT) : null,
-      horaFinal: registroDeEstudo.horaFinal ? registroDeEstudo.horaFinal.format(DATE_TIME_FORMAT) : null,
       duracaoTempo: registroDeEstudo.duracaoTempo,
       areaId: registroDeEstudo.areaId,
       disciplinaId: registroDeEstudo.disciplinaId,
@@ -98,7 +97,6 @@ export class RegistroDeEstudoUpdateComponent implements OnInit {
       horaInicial: this.editForm.get(['horaInicial'])!.value
         ? moment(this.editForm.get(['horaInicial'])!.value, DATE_TIME_FORMAT)
         : undefined,
-      horaFinal: this.editForm.get(['horaFinal'])!.value ? moment(this.editForm.get(['horaFinal'])!.value, DATE_TIME_FORMAT) : undefined,
       duracaoTempo: this.editForm.get(['duracaoTempo'])!.value,
       areaId: this.editForm.get(['areaId'])!.value,
       disciplinaId: this.editForm.get(['disciplinaId'])!.value,

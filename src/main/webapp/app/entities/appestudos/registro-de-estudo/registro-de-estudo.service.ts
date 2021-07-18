@@ -24,20 +24,6 @@ export class RegistroDeEstudoService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
-  start(registroDeEstudo: IRegistroDeEstudo): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(registroDeEstudo);
-    return this.http
-      .post<IRegistroDeEstudo>(this.resourceUrl+"/start", copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
-  }
-
-  stop(registroDeEstudo: IRegistroDeEstudo): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(registroDeEstudo);
-    return this.http
-      .put<IRegistroDeEstudo>(this.resourceUrl+"/stop", copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
-  }
-
   update(registroDeEstudo: IRegistroDeEstudo): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(registroDeEstudo);
     return this.http
@@ -66,7 +52,6 @@ export class RegistroDeEstudoService {
     const copy: IRegistroDeEstudo = Object.assign({}, registroDeEstudo, {
       horaInicial:
         registroDeEstudo.horaInicial && registroDeEstudo.horaInicial.isValid() ? registroDeEstudo.horaInicial.toJSON() : undefined,
-      horaFinal: registroDeEstudo.horaFinal && registroDeEstudo.horaFinal.isValid() ? registroDeEstudo.horaFinal.toJSON() : undefined,
     });
     return copy;
   }
@@ -74,7 +59,6 @@ export class RegistroDeEstudoService {
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.horaInicial = res.body.horaInicial ? moment(res.body.horaInicial) : undefined;
-      res.body.horaFinal = res.body.horaFinal ? moment(res.body.horaFinal) : undefined;
     }
     return res;
   }
@@ -83,7 +67,6 @@ export class RegistroDeEstudoService {
     if (res.body) {
       res.body.forEach((registroDeEstudo: IRegistroDeEstudo) => {
         registroDeEstudo.horaInicial = registroDeEstudo.horaInicial ? moment(registroDeEstudo.horaInicial) : undefined;
-        registroDeEstudo.horaFinal = registroDeEstudo.horaFinal ? moment(registroDeEstudo.horaFinal) : undefined;
       });
     }
     return res;

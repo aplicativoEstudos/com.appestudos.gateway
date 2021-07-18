@@ -35,7 +35,6 @@
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="horaInicial"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaInicial">Hora Inicial</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="horaFinal"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaFinal">Hora Final</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="duracaoTempo"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.duracaoTempo">Duracao Tempo</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="areaId"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.area">Area</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="disciplinaId"><span jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.disciplina">Disciplina</span> <fa-icon icon="sort"></fa-icon></th>
@@ -47,35 +46,24 @@
                 <tr *ngFor="let registroDeEstudo of registroDeEstudos ;trackBy: trackId">
                     <td><a [routerLink]="['/registro-de-estudo', registroDeEstudo.id, 'view']">{{ registroDeEstudo.id }}</a></td>
                     <td>{{ registroDeEstudo.horaInicial | date:'medium' }}</td>
-                    <td>{{ registroDeEstudo.horaFinal | date:'medium' }}</td>
                     <td>{{ registroDeEstudo.duracaoTempo }}</td>
                     <td>
                         <div *ngIf="registroDeEstudo.areaId">
-                            <a [routerLink]="['/area', registroDeEstudo.areaId , 'view']" >{{ registroDeEstudo.areaId }}</a>
+                            <a [routerLink]="['/area', registroDeEstudo.areaId , 'view']" >{{ registroDeEstudo.area.noma }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="registroDeEstudo.disciplinaId">
-                            <a [routerLink]="['/disciplina', registroDeEstudo.disciplinaId , 'view']" >{{ registroDeEstudo.disciplinaId }}</a>
+                            <a [routerLink]="['/disciplina', registroDeEstudo.disciplinaId , 'view']" >{{ registroDeEstudo.disciplina.nomeDisciplina }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="registroDeEstudo.pessoaId">
-                            <a [routerLink]="['/pessoa', registroDeEstudo.pessoaId , 'view']" >{{ registroDeEstudo.pessoaId }}</a>
+                            <a [routerLink]="['/pessoa', registroDeEstudo.pessoaId , 'view']" >{{ registroDeEstudo.pessoa.nome }}</a>
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit" (click)="start(registroDeEstudo)"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.start">Start</span>
-                            </button>
-                            <button type="submit" (click)="stop(registroDeEstudo)"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.stop">Stop</span>
-                            </button>
                             <button type="submit"
                                     [routerLink]="['/registro-de-estudo', registroDeEstudo.id, 'view']"
                                     class="btn btn-info btn-sm">

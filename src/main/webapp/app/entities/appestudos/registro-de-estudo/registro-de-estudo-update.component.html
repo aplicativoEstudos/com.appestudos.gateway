@@ -19,13 +19,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.horaFinal" for="field_horaFinal">Hora Final</label>
-                    <div class="d-flex">
-                        <input id="field_horaFinal" type="datetime-local" class="form-control" name="horaFinal" formControlName="horaFinal" placeholder="YYYY-MM-DD HH:mm"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.duracaoTempo" for="field_duracaoTempo">Duracao Tempo</label>
                     <input type="text" class="form-control" name="duracaoTempo" id="field_duracaoTempo"
                            formControlName="duracaoTempo"/>
@@ -35,7 +28,7 @@
                     <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.area" for="field_area">Area</label>
                     <select class="form-control" id="field_area" name="area" formControlName="areaId">
                         <option *ngIf="!editForm.get('areaId')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="areaOption.id" *ngFor="let areaOption of areas; trackBy: trackById">{{ areaOption.id }}</option>
+                        <option [ngValue]="areaOption.id" *ngFor="let areaOption of areas; trackBy: trackById">{{ areaOption.noma }}</option>
                     </select>
                 </div>
                 <div *ngIf="editForm.get('areaId')!.invalid && (editForm.get('areaId')!.dirty || editForm.get('areaId')!.touched)">
@@ -49,7 +42,7 @@
                     <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.disciplina" for="field_disciplina">Disciplina</label>
                     <select class="form-control" id="field_disciplina" name="disciplina" formControlName="disciplinaId">
                         <option *ngIf="!editForm.get('disciplinaId')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="disciplinaOption.id" *ngFor="let disciplinaOption of disciplinas; trackBy: trackById">{{ disciplinaOption.id }}</option>
+                        <option [ngValue]="disciplinaOption.id" *ngFor="let disciplinaOption of disciplinas; trackBy: trackById">{{ disciplinaOption.nomeDisciplina }}</option>
                     </select>
                 </div>
                 <div *ngIf="editForm.get('disciplinaId')!.invalid && (editForm.get('disciplinaId')!.dirty || editForm.get('disciplinaId')!.touched)">
@@ -63,7 +56,7 @@
                     <label class="form-control-label" jhiTranslate="gatewayappestudosApp.appestudosRegistroDeEstudo.pessoa" for="field_pessoa">Pessoa</label>
                     <select class="form-control" id="field_pessoa" name="pessoa" formControlName="pessoaId">
                         <option *ngIf="!editForm.get('pessoaId')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="pessoaOption.id" *ngFor="let pessoaOption of pessoas; trackBy: trackById">{{ pessoaOption.id }}</option>
+                        <option [ngValue]="pessoaOption.id" *ngFor="let pessoaOption of pessoas; trackBy: trackById">{{ pessoaOption.nome }}</option>
                     </select>
                 </div>
                 <div *ngIf="editForm.get('pessoaId')!.invalid && (editForm.get('pessoaId')!.dirty || editForm.get('pessoaId')!.touched)">
