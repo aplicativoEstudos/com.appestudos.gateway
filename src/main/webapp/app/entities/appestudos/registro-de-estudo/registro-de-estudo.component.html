@@ -49,17 +49,17 @@
                     <td>{{ registroDeEstudo.duracaoTempo }}</td>
                     <td>
                         <div *ngIf="registroDeEstudo.areaId">
-                            <a [routerLink]="['/area', registroDeEstudo.areaId , 'view']" >{{ registroDeEstudo.area.noma }}</a>
+                            <a [routerLink]="['/area', registroDeEstudo.areaId , 'view']" >{{ registroDeEstudo.area!.noma }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="registroDeEstudo.disciplinaId">
-                            <a [routerLink]="['/disciplina', registroDeEstudo.disciplinaId , 'view']" >{{ registroDeEstudo.disciplina.nomeDisciplina }}</a>
+                            <a [routerLink]="['/disciplina', registroDeEstudo.disciplinaId , 'view']" >{{ registroDeEstudo.disciplina!.nomeDisciplina }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="registroDeEstudo.pessoaId">
-                            <a [routerLink]="['/pessoa', registroDeEstudo.pessoaId , 'view']" >{{ registroDeEstudo.pessoa.nome }}</a>
+                            <a [routerLink]="['/pessoa', registroDeEstudo.pessoaId , 'view']" >{{ registroDeEstudo.pessoa!.nome }}</a>
                         </div>
                     </td>
                     <td class="text-right">
