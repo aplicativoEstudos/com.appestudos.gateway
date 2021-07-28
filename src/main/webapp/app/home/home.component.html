@@ -63,37 +63,63 @@
             <div class="navbar-nav">
                 <a href="#" class="nav-item nav-link active">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <div class="form-check">
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="1"  [(ngModel)]="radioArea" >
                         <label class="form-check-label" for="exampleCheck1">Enem</label>
                         <br>
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Oab</label>
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="2"  [(ngModel)]="radioArea" >
+                        <label class="form-check-label" for="exampleCheck2">Oab</label>
                     </div>
 
                 </a>
                 <a href="#" class="nav-item nav-link active">
 
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Concurso</label>
+                    <div class="form-check" >
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="3"  [(ngModel)]="radioArea" >
+                        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleCheck3" required/> -->
+                        <!-- type="radio" name="exampleRadios" [(ngModel)]="exampleCheck3" id="exampleCheck3" > -->
+                        <label  class="form-check-label" for="exampleCheck3">Concurso</label>
                         <br>
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Personalizado</label>
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="4" [(ngModel)]="radioArea"/>
+                        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleCheck4" required/> -->
+                        <!-- type="radio" name="exampleRadios" [(ngModel)]="exampleCheck4" id="exampleCheck4"> -->
+                        <label class="form-check-label" for="exampleCheck4">Personalizado</label>
 
                     </div>
 
 
 
                 </a>
-                <a href="#" class="nav-item nav-link">
-                    <select class="form-control"></select>
+                <a href="#" class="nav-item nav-link" >
+                    <select class="form-control" [disabled]="oculto" [(ngModel)]="disciplinaId">
+                        <option [ngValue]="disciplinaOption.id" 
+                        *ngFor="let disciplinaOption of disciplinas; trackBy: trackById">
+                        {{ disciplinaOption.nomeDisciplina }}</option>
+                    </select>
+                    
                     
                 </a>
 
                 <a href="#" class="nav-item nav-link">
-                    
-                    <button type="submit" class="btn btn-outline-light">START</button>
+                    <button type="submit" (click)='start()' class="btn btn-outline-light">START</button>
                 </a>
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='pausar()' class="btn btn-outline-light">PAUSAR</button>
+                </a>
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='zerar()' class="btn btn-outline-light">ZERAR</button>
+                </a>
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='cancelar()' class="btn btn-outline-light">CANCELAR</button>
+                </a>
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='salvar()' class="btn btn-outline-light">SALVAR</button>
+                </a>
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <p class="form-control" style="font-size: 20px;font-weight: 700;">
+                        {{horas}} : {{minutos}} : {{segundos}}
+                    </p>
+                </a> 
                 
 
             </div>
