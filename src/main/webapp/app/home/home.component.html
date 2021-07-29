@@ -64,10 +64,10 @@
                 <a href="#" class="nav-item nav-link active">
                     <div class="form-check">
                         <div class="form-check">
-                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="1"  [(ngModel)]="radioArea" >
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="1" (change)="carregarAreaDisciplinas()"  [(ngModel)]="radioArea" >
                         <label class="form-check-label" for="exampleCheck1">Enem</label>
                         <br>
-                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="2"  [(ngModel)]="radioArea" >
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="2" (change)="carregarAreaDisciplinas()"  [(ngModel)]="radioArea" >
                         <label class="form-check-label" for="exampleCheck2">Oab</label>
                     </div>
 
@@ -75,12 +75,12 @@
                 <a href="#" class="nav-item nav-link active">
 
                     <div class="form-check" >
-                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="3"  [(ngModel)]="radioArea" >
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="3" (change)="carregarAreaDisciplinas()"  [(ngModel)]="radioArea" >
                         <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleCheck3" required/> -->
                         <!-- type="radio" name="exampleRadios" [(ngModel)]="exampleCheck3" id="exampleCheck3" > -->
                         <label  class="form-check-label" for="exampleCheck3">Concurso</label>
                         <br>
-                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="4" [(ngModel)]="radioArea"/>
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="4" (change)="carregarAreaDisciplinas()" [(ngModel)]="radioArea"/>
                         <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleCheck4" required/> -->
                         <!-- type="radio" name="exampleRadios" [(ngModel)]="exampleCheck4" id="exampleCheck4"> -->
                         <label class="form-check-label" for="exampleCheck4">Personalizado</label>
@@ -92,9 +92,9 @@
                 </a>
                 <a href="#" class="nav-item nav-link" >
                     <select class="form-control" [disabled]="oculto" [(ngModel)]="disciplinaId">
-                        <option [ngValue]="disciplinaOption.id" 
-                        *ngFor="let disciplinaOption of disciplinas; trackBy: trackById">
-                        {{ disciplinaOption.nomeDisciplina }}</option>
+                        <option [ngValue]="areaDisciplinaOption.disciplinaId" 
+                        *ngFor="let areaDisciplinaOption of areaDisciplinas; trackBy: trackById">
+                        {{ areaDisciplinaOption.disciplinaNomeDisciplina }}</option>
                     </select>
                     
                     

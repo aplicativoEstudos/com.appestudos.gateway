@@ -3,15 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'app/core/login/login.service';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
-import { IDisciplina } from 'app/shared/model/appestudos/disciplina.model';
 import { HttpResponse } from '@angular/common/http';
-import { DisciplinaService } from 'app/entities/appestudos/disciplina/disciplina.service';
-import { timeStamp } from 'console';
 import { IRegistroDeEstudo } from 'app/shared/model/appestudos/registro-de-estudo.model';
 import { Observable } from 'rxjs';
 import { RegistroDeEstudoService } from 'app/entities/appestudos/registro-de-estudo/registro-de-estudo.service';
+import { AreaDisciplinaService } from 'app/entities/appestudos/area-disciplina/area-disciplina.service';
+import { IAreaDisciplina } from 'app/shared/model/appestudos/area-disciplina.model';
+import { removerCamposVaziosDoRequest } from './../shared/util/request-util';
 
-type SelectableEntity = IDisciplina;
+type SelectableEntity = IAreaDisciplina;
 
 @Component({
   selector: 'jhi-home',
@@ -21,7 +21,7 @@ type SelectableEntity = IDisciplina;
 export class HomeComponent implements OnInit {
   account: Account | null = null;
   radioArea?:any = null;
-  disciplinas: IDisciplina[] = [];
+  areaDisciplinas: IAreaDisciplina[] = [];
   disciplinaId:any = null;
   oculto: any = false;
 
@@ -36,13 +36,15 @@ export class HomeComponent implements OnInit {
     protected registroDeEstudoService: RegistroDeEstudoService,
     private accountService: AccountService,
     private loginService: LoginService,
-    protected disciplinaService: DisciplinaService
+    protected areaDisciplinaService: AreaDisciplinaService
     ) {}
 
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => (this.account = account));
 
-    this.disciplinaService.query().subscribe((res: HttpResponse<IDisciplina[]>) => (this.disciplinas = res.body || []));
+    this.carregarAreaDisciplinas();
+    // this.areaDisciplinaService.query()
+    // .subscribe((res: HttpResponse<IAreaDisciplina[]>) => (this.areaDisciplinas = res.body || []));
   }
 
   isAuthenticated(): boolean {
@@ -112,4 +114,32 @@ export class HomeComponent implements OnInit {
   protected sucesso(): void {
     // this.erro = err.error.detail;
   }
+
+  public carregarAreaDisciplinas(): void {
+    if(this.radioArea!==null){
+      let request = {};
+      // request = this.montarFiltro();
+
+      request['AreaId.equals'] = this.radioArea;
+      request = removerCamposVaziosDoRequest(request);
+
+      // this.demandaOrcamentariaService.query(request).subscribe(
+      //   (res: HttpResponse<IDemandaOrcamentaria[]>) => this.onSuccess(res.body, res.headers),
+      //   (err: any) => this.onError(err)
+      // );
+      this.areaDisciplinaService.query(request)
+      .subscribe((res: HttpResponse<IAreaDisciplina[]>) => (this.areaDisciplinas = res.body || []))
+    }
+  }
+
+  // montarFiltro(): any {
+  //   let request = {};
+  //   request['AreaId.equals'] = this.radioArea ? this.radioArea : null;
+
+
+  //   request = removerCamposVaziosDoRequest(request);
+
+  //   // this.montarResumo();
+  //   return request;
+  // }
 }

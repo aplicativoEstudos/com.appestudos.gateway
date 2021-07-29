@@ -25,6 +25,10 @@ import { RouterModule } from '@angular/router';
         loadChildren: () =>
           import('./appestudos/registro-de-estudo/registro-de-estudo.module').then(m => m.AppestudosRegistroDeEstudoModule),
       },
+      {
+        path: 'area-disciplina',
+        loadChildren: () => import('./appestudos/area-disciplina/area-disciplina.module').then(m => m.AppestudosAreaDisciplinaModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

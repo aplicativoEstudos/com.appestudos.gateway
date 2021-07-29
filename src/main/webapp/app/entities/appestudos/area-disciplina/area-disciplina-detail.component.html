@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="areaDisciplina">
+            <h2><span jhiTranslate="gatewayappestudosApp.appestudosAreaDisciplina.detail.title">Area Disciplina</span> {{ areaDisciplina.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosAreaDisciplina.geral">Geral</span></dt>
+                <dd>
+                    <span>{{ areaDisciplina.geral }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosAreaDisciplina.area">Area</span></dt>
+                <dd>
+                    <div *ngIf="areaDisciplina.areaId">
+                        <a [routerLink]="['/area', areaDisciplina.areaId, 'view']">{{ areaDisciplina.areaNoma }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gatewayappestudosApp.appestudosAreaDisciplina.disciplina">Disciplina</span></dt>
+                <dd>
+                    <div *ngIf="areaDisciplina.disciplinaId">
+                        <a [routerLink]="['/disciplina', areaDisciplina.disciplinaId, 'view']">{{ areaDisciplina.disciplinaNomeDisciplina }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/area-disciplina', areaDisciplina.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

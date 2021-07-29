@@ -1,0 +1,28 @@
+{
+  "gatewayappestudosApp": {
+    "appestudosAreaDisciplina": {
+      "home": {
+        "title": "Area Disciplinas",
+        "createLabel": "Crear nuevo Area Disciplina",
+        "createOrEditLabel": "Crear o editar Area Disciplina",
+        "notFound": "Ningún Area Disciplinas encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Area Disciplina {{ id }}?"
+      },
+      "detail": {
+        "title": "Area Disciplina"
+      },
+      "geral": "Geral",
+      "area": "Area",
+      "disciplina": "Disciplina"
+    }
+  },
+  "appestudosApp": {
+    "appestudosAreaDisciplina": {
+      "created": "Un nuevo Area Disciplina ha sido creado con el identificador {{ param }}",
+      "updated": "Un Area Disciplina ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Area Disciplina ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}
