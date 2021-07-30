@@ -127,7 +127,7 @@ export class HomeComponent implements OnInit {
       //   (res: HttpResponse<IDemandaOrcamentaria[]>) => this.onSuccess(res.body, res.headers),
       //   (err: any) => this.onError(err)
       // );
-      this.areaDisciplinaService.query(request)
+      this.areaDisciplinaService.queryComGeral(request)
       .subscribe((res: HttpResponse<IAreaDisciplina[]>) => (this.areaDisciplinas = res.body || []))
     }
   }
