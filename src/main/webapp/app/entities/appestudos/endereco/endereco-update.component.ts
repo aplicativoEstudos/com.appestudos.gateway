@@ -13,7 +13,10 @@ import { EnderecoService } from './endereco.service';
   templateUrl: './endereco-update.component.html',
 })
 export class EnderecoUpdateComponent implements OnInit {
+  
   isSaving = false;
+  viaCep: any = null;
+  readOnlyViaCep = false;
 
   editForm = this.fb.group({
     id: [],
@@ -83,5 +86,34 @@ export class EnderecoUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  getViaCep(): void{
+    this.enderecoService.viaCep( this.editForm.get(['cep'])!.value)
+    .subscribe(
+      (res: HttpResponse<any>) => {this.updateFormViaCep(res.body)},
+      (err: any) => this.onErrorViaCep(err)
+     );
+      this.viaCep;
+  }
+  // protected subscribeToSaveResponse(result: Observable<HttpResponse<IRegistroDeEstudo>>): void {
+  //   result.subscribe(
+  //     () => {this.sucesso()},
+  //     (err: any) => this.onErrorCustom(err)
+  //     );
+  // }
+  updateFormViaCep(enderecoViaCep: any): void {
+    if(enderecoViaCep!=null){
+      this.editForm.patchValue({        
+        cidade: enderecoViaCep.localidade,
+        bairro: enderecoViaCep.bairro,
+        rua: enderecoViaCep.logradouro.trim(),
+        cep: enderecoViaCep.cep,
+      });
+      this.readOnlyViaCep = true;
+    }
+  }
+  protected onErrorViaCep(err: any): void {
+    this.readOnlyViaCep = false;
   }
 }

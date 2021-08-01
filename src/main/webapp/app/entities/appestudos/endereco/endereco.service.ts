@@ -8,6 +8,7 @@ import { IEndereco } from 'app/shared/model/appestudos/endereco.model';
 
 type EntityResponseType = HttpResponse<IEndereco>;
 type EntityArrayResponseType = HttpResponse<IEndereco[]>;
+type EntityResponseAnyType = HttpResponse<any>;
 
 @Injectable({ providedIn: 'root' })
 export class EnderecoService {
@@ -34,5 +35,9 @@ export class EnderecoService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  viaCep(cep: string): Observable<EntityResponseAnyType> {
+    return this.http.get<any>(this.resourceUrl+"/via-cep/"+cep, { observe: 'response' });
   }
 }
