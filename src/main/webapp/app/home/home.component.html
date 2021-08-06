@@ -100,26 +100,26 @@
                     
                 </a>
 
-                <a href="#" class="nav-item nav-link">
-                    <button type="submit" (click)='start()' class="btn btn-outline-light">START</button>
+                <a href="#" class="nav-item nav-link" *ngIf="oculto===false">
+                    <button type="submit" (click)='start()' ngbTooltip="Start"  class="btn btn-warning"> <i class="fas fa-play"></i></button>
                 </a>
                 <a href="#" class="nav-item nav-link" *ngIf="oculto">
-                    <button type="submit" (click)='pausar()' class="btn btn-outline-light">PAUSAR</button>
+                    <button type="submit" (click)='pausar()' class="btn btn-outline-light"> <i class="fas fa-pause"></i></button>
                 </a>
                 <a href="#" class="nav-item nav-link" *ngIf="oculto">
-                    <button type="submit" (click)='zerar()' class="btn btn-outline-light">ZERAR</button>
+                    <button type="submit" (click)='zerar()' class="btn btn-outline-light"><i class="fas fa-plus"></i></button>
                 </a>
                 <a href="#" class="nav-item nav-link" *ngIf="oculto">
-                    <button type="submit" (click)='cancelar()' class="btn btn-outline-light">CANCELAR</button>
+                    <button type="submit" (click)='cancelar()' class="btn btn-warning"><i class="fas fa-window-close"></i></button>
                 </a>
                 <a href="#" class="nav-item nav-link" *ngIf="oculto">
-                    <button type="submit" (click)='salvar()' class="btn btn-outline-light">SALVAR</button>
+                    <button type="submit" (click)='salvar()' class="btn btn-success"><i class="fas fa-save"></i></button>
                 </a>
                 <a href="#" class="nav-item nav-link" *ngIf="oculto">
                     <p class="form-control" style="font-size: 20px;font-weight: 700;">
                         {{horas}} : {{minutos}} : {{segundos}}
                     </p>
-                </a> 
+                </a>
                 
 
             </div>
