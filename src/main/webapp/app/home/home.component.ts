@@ -19,11 +19,15 @@ type SelectableEntity = IAreaDisciplina;
   styleUrls: ['home.scss'],
 })
 export class HomeComponent implements OnInit {
+
   account: Account | null = null;
   radioArea?:any = null;
   areaDisciplinas: IAreaDisciplina[] = [];
   disciplinaId:any = null;
   oculto: any = false;
+  ocultoStartPause: any = false;
+  descricaoStart: any = 'Iniciar';
+  ocultoRelogio: any = false;
 
   registroDeEstudo?: IRegistroDeEstudo = {};
 
@@ -31,6 +35,11 @@ export class HomeComponent implements OnInit {
   minutos: any = 0;
   horas: any = 0;
   interval: any = 0;
+  
+  // declarei essas duas variáveis para aparecer as mensagens.
+ 
+  mensagemSucesso: any;
+  mensagemErro: any;
 
   constructor(
     protected registroDeEstudoService: RegistroDeEstudoService,
@@ -54,10 +63,12 @@ export class HomeComponent implements OnInit {
   login(): void {
     this.loginService.login();
   }
-
+  
   start(): void{
     if(this.radioArea!==null&&this.disciplinaId!=null){
-    this.oculto = true;
+    this.oculto = false;
+    this.ocultoStartPause = true;
+    this.ocultoRelogio = true;
     this.interval = setInterval(() => {
       if(this.segundos < 59) {
         this.segundos++;
@@ -81,12 +92,17 @@ export class HomeComponent implements OnInit {
   pausar(): void {
     // this.registroDeEstudo!.duracaoTempo = this.horas+':'+this.minutos+':'+this.segundos;
     // this.subscribeToSaveResponse(this.registroDeEstudoService.create(this.registroDeEstudo!));
+    this.ocultoStartPause = !this.ocultoStartPause;
+    this.oculto = true; 
+    this.ocultoRelogio = true;
     clearInterval(this.interval);
   }
 
   cancelar(): void {
     this.zerar();
     this.oculto = false;
+    this.ocultoStartPause = false;
+    this.ocultoRelogio = false;
   }
   salvar(): void{
     if(this.radioArea!==null&&this.disciplinaId!=null){
@@ -95,10 +111,20 @@ export class HomeComponent implements OnInit {
      this.registroDeEstudo!.disciplinaId = this.disciplinaId;
      this.registroDeEstudo!.areaId = this.radioArea;
      this.subscribeToSaveResponse(this.registroDeEstudoService.create(this.registroDeEstudo!));
+     
      this.cancelar()
-     this.minutos = 0; this.segundos = 0; this.horas = 0;
+
+         
+    //  Mensagem de Salvar não conseguir colocar para desaparecer a mensagem, mas tentei dessa forma ai.
+     setTimeout(() => {
+      this.mensagemSucesso='salvo com sucesso';
+    }, 0);
+
+    this.minutos = 0; this.segundos = 0; this.horas = 0;
+     
     }
-  }
+  } 
+
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }

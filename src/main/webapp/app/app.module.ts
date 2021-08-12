@@ -13,6 +13,7 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
+import { ActiveMenuFooterDirective } from './layouts/footer/active-menu-footer.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ErrorComponent } from './layouts/error/error.component';
     GatewayappestudosEntityModule,
     GatewayappestudosAppRoutingModule,
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent,ActiveMenuFooterDirective],
   bootstrap: [MainComponent],
+  exports: [FooterComponent],
 })
 export class GatewayappestudosAppModule {}

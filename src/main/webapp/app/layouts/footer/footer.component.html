@@ -1,3 +1,86 @@
-<div class="footer">
+<div class="footer" >
     <p jhiTranslate="footer">This is your footer</p>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-bottom" >
+
+        <a href="#" class="navbar-brand" >SELECIONE SEU GUIA</a>
+        
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarCollapse" >
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link active">
+                    <div class="form-check">
+                        <div class="form-check">
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="1" (change)="carregarAreaDisciplinas()"  [(ngModel)]="radioArea" >
+                        <label class="form-check-label" for="exampleCheck1">Enem</label>
+                        <br>
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="2" (change)="carregarAreaDisciplinas()"  [(ngModel)]="radioArea" >
+                        <label class="form-check-label" for="exampleCheck2">Oab</label>
+                    </div>
+    
+                </a>
+                <a href="#" class="nav-item nav-link active">
+    
+                    <div class="form-check" >
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="3" (change)="carregarAreaDisciplinas()"  [(ngModel)]="radioArea" >
+                        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleCheck3" required/> -->
+                        <!-- type="radio" name="exampleRadios" [(ngModel)]="exampleCheck3" id="exampleCheck3" > -->
+                        <label  class="form-check-label" for="exampleCheck3">Concurso</label>
+                        <br>
+                        <input [disabled]="oculto" name="options" ng-control="options" type="radio" [value]="4" (change)="carregarAreaDisciplinas()" [(ngModel)]="radioArea"/>
+                        <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleCheck4" required/> -->
+                        <!-- type="radio" name="exampleRadios" [(ngModel)]="exampleCheck4" id="exampleCheck4"> -->
+                        <label class="form-check-label" for="exampleCheck4">Personalizado</label>
+    
+                    </div>
+    
+    
+    
+                </a>
+                <a href="#" class="nav-item nav-link" >
+                    <select class="form-control" [disabled]="oculto" [(ngModel)]="disciplinaId">
+                        <option [ngValue]="areaDisciplinaOption.disciplinaId" 
+                        *ngFor="let areaDisciplinaOption of areaDisciplinas; trackBy: trackById">
+                        {{ areaDisciplinaOption.disciplinaNomeDisciplina }}</option>
+                    </select>
+                    
+                    
+                </a>
+    
+                <a href="#" class="nav-item nav-link" *ngIf="ocultoStartPause===false">
+                    <button type="submit" (click)='start()' ngbTooltip="Start"  class="btn btn-warning"> <i class="fas fa-play">  </i> {{this.descricaoStart}}</button>
+                </a>
+                <a href="#" class="nav-item nav-link" *ngIf="ocultoStartPause">
+                    <button type="submit" (click)='pausar()' ngbTooltip="Pausar"  class="btn btn-outline-light"> <i class="fas fa-pause">  </i> Parar</button>
+                </a>
+                
+                <!-- <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='zerar()' class="btn btn-outline-light"> <i class="fas fa-play"></i> Continuar </button>
+                </a>
+           -->
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='salvar()' ngbTooltip="Salvar"  class="btn btn-success"><i class="fas fa-save"> </i> Salvar</button>
+                </a>
+    
+                <a href="#" class="nav-item nav-link" *ngIf="oculto">
+                    <button type="submit" (click)='cancelar()' ngbTooltip="Cancelar"  class="btn btn-warning"><i class="fas fa-window-close"> </i> Cancelar</button>
+                </a>
+    
+    
+                <!-- mais elegate-->
+                <a href="#" class="nav-item nav-link" *ngIf="ocultoRelogio">
+                    <p class="form-control" style="font-family:courier,arial,helvetica;">
+                        <strong> {{horas}}h: {{minutos}}m: {{segundos}}s</strong> 
+                    </p>
+                </a>
+                
+    
+            </div>
+            <form class="form-inline ml-auto">
+                
+                <a type="submit" routerLink="disciplina"  class="btn btn-outline-light">NOVA DISCIPLINA</a>
+            </form>
+        </div>
+    </nav>   
+    
 </div>

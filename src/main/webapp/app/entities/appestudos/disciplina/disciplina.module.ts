@@ -7,6 +7,7 @@ import { DisciplinaDetailComponent } from './disciplina-detail.component';
 import { DisciplinaUpdateComponent } from './disciplina-update.component';
 import { DisciplinaDeleteDialogComponent } from './disciplina-delete-dialog.component';
 import { disciplinaRoute } from './disciplina.route';
+import { FooterComponent } from 'app/layouts/footer/footer.component';
 
 @NgModule({
   imports: [GatewayappestudosSharedModule, RouterModule.forChild(disciplinaRoute)],

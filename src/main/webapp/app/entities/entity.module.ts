@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from 'app/layouts/footer/footer.component';
 
 @NgModule({
   imports: [
