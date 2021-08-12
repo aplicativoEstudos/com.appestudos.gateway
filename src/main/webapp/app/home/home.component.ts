@@ -48,8 +48,13 @@ export class HomeComponent implements OnInit {
     protected areaDisciplinaService: AreaDisciplinaService
     ) {}
 
-  ngOnInit(): void {
-    this.accountService.identity().subscribe(account => (this.account = account));
+  ngOnInit(): void {    
+    this.accountService.identity().subscribe(account => {
+      this.account = account
+      if(this.account===null){
+        this.login();
+      }
+    });
 
     this.carregarAreaDisciplinas();
     // this.areaDisciplinaService.query()
